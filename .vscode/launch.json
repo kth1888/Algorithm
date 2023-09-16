@@ -3,11 +3,13 @@
   "configurations": [
     {
       "name": "C/C++ Runner: Debug Session",
-      "type": "lldb",
+      "type": "cppvsdbg",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/copy/Copy/Projects/Algorithm",
-      "program": "/Users/copy/Copy/Projects/Algorithm/build/Debug/outDebug"
+      "stopAtEntry": false,
+      "console": "externalTerminal",
+      "cwd": "c:/Copy/Projects/Algorithm/Practices/Output",
+      "program": "c:/Copy/Projects/Algorithm/Practices/Output/build/Debug/outDebug"
     }
   ]
 }
