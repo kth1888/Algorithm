@@ -112,7 +112,8 @@
     "xstddef": "cpp",
     "xstring": "cpp",
     "xtr1common": "cpp",
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "__locale": "cpp"
   },
   "C_Cpp_Runner.msvcSecureNoWarnings": false
 }
