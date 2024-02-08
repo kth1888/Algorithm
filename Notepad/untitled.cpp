@@ -1,28 +1,40 @@
-// string split 같은 거 이용해서 저장한다면 어떨까..?
-
 #include <iostream>
-#include <sstream>
 
 using namespace std;
 
 int main()
 {
-    string sample = "OOXXOXXOOO";
+    int N, M;
+    cin >> N >> M;
 
-    istringstream s1(sample);
+    char **Board = new char *[N];
 
-    string buffer;
-
-    int sum = 0;
-
-    while (getline(s1, buffer, 'X'))
+    for (int i = 0; i < N; i++)
     {
-        int stack = 1;
-        for (int i = 0; i < buffer.length(); i++)
+        Board[i] = new char[M];
+
+        for (int j = 0; j < M; j++)
         {
-            sum += stack;
-            stack++;
+            cin >> Board[i][j];
         }
     }
-    cout << sum << '\n';
+
+    int changes = 0;
+
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = 0; j < M; j++)
+        {
+            if (Board[i][j] != Board[i][j + 1] && j + 1 != 8 && Board[i][j] != Board[i + 1][j] && i + 1 != 8)
+            {
+                cout << "comparing " << Board[i][j] << " and " << Board[i][j + 1] << '\n';
+                changes++;
+
+                cout << changes << '\n';
+            }
+        }
+    }
+    cout << "bn" << '\n';
+
+    cout << changes << '\n';
 }
