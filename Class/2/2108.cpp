@@ -9,19 +9,6 @@ int main()
     int N;
     cin >> N;
 
-    if (N == 1)
-    {
-        int result;
-        cin >> result;
-
-        cout << result << '\n';
-        cout << result << '\n';
-        cout << result << '\n';
-        cout << 0 << '\n';
-
-        return 0;
-    }
-
     int medloc = N / 2 + 1;
     // cout << medloc << '\n';
 
@@ -41,33 +28,29 @@ int main()
         minnum = min(minnum, numbers[i]);
         maxnum = max(maxnum, numbers[i]);
 
-        numcounter[numbers[i] + 4001]++;
+        numcounter[numbers[i] + 4000]++;
     }
 
-    cout << maxnum << '\n';
-    cout << minnum << '\n';
+    // cout << maxnum << '\n';
+    // cout << minnum << '\n';
     int numrange = maxnum - minnum;
 
-    cout << sum << '\n';
+    // cout << sum << '\n';
 
-    float average = 0;
+    double average = 0;
     if (sum < 0)
     {
-        float rawnum = -sum;
+        double rawnum = -double(sum);
         // cout << rawnum << '\n';
         rawnum = rawnum / N;
         // cout << rawnum << '\n';
-        float newnum = floor(rawnum + 0.5);
+        double newnum = floor(rawnum + 0.5);
         // cout << newnum << '\n';
         average = -newnum;
-        if (average == 0)
-        {
-            average = 0;
-        }
     }
     else
     {
-        average = floor(sum / N + 0.5);
+        average = floor(double(sum) / N + 0.5);
     }
 
     sort(numbers, numbers + N);
@@ -77,14 +60,14 @@ int main()
     // 최빈값의 개수
     int modenum = -1;
     //  최빈값
-    int modenumloc = 4001;
+    int modenumloc = -1;
 
     for (int i = 0; i < 8001; i++)
     {
 
         if (numcounter[i] != 0)
         {
-            //cout << "comparing " << i - 4001 << ":" << numcounter[i] << '\n';
+            // cout << "comparing " << i - 4001 << ":" << numcounter[i] << '\n';
             if (modenum < numcounter[i])
             {
                 modenum = numcounter[i];
@@ -94,12 +77,12 @@ int main()
     }
 
     int count = 0;
-    int minmodenumloc = 0;
+    int minmodenumloc = -1;
     for (int i = 0; i < 8001; i++)
     {
         if (modenum == numcounter[i])
         {
-            if (minmodenumloc == 0)
+            if (minmodenumloc == -1)
             {
                 minmodenumloc = i;
             }
@@ -120,8 +103,13 @@ int main()
         }
     }
 
-    cout << average << '\n';
+    minmodenumloc -= 4000;
+
+    cout << fixed;
+    cout.precision(0);
+
+    cout << average + 0.0 << '\n';
     cout << median << '\n';
-    cout << minmodenumloc - 4001 << '\n';
+    cout << minmodenumloc << '\n';
     cout << numrange << '\n';
 }
