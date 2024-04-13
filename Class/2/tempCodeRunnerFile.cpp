@@ -1,2 +1,2 @@
 
-    cout << count << ' ' << amount << '\n';
+    // cout << x << y << z << limity << '\n';
