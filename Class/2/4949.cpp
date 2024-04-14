@@ -10,7 +10,7 @@ int main()
     {
         stack<int> bracket;
         string input;
-        bool isvalid = false;
+        bool isvalid = true;
         getline(cin, input);
         // cout << input << '\n';
 
