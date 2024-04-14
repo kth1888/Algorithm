@@ -1,79 +1,58 @@
 #include <iostream>
-#include <stack>
+#include <algorithm>
 
 using namespace std;
 
-int main()
+short main()
 {
+    cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
 
-    while (true)
+    int N;
+    cin >> N;
+    short maxN = 0;
+    short *nums = new short[N];
+    short *result = new short[N];
+
+    for (short i = 0; i < N; i++)
     {
-        stack<int> bracket;
-        string input;
-        bool isvalid = false;
-        getline(cin, input);
-        // cout << input << '\n';
+        cin >> nums[i];
+        maxN = max(nums[i], maxN);
+    }
+    // cout << maxN;
 
-        if (input[0] == '.')
-        {
-            // cout << "empty" << '\n';
-            return 0;
-        }
+    short *counting = new short[maxN + 1]();
 
-        int l = input.length();
+    for (short i = 0; i < N; i++)
+    {
+        counting[nums[i]]++;
+        // cout << counting[nums[i]] << '\n';
+    }
 
-        for (int i = 0; i < l; i++)
-        {
-            // cout << input[i] << ' ';
-            if (input[i] == '(')
-            {
-                bracket.push(1);
-                isvalid = true;
-            }
-            else if (input[i] == '[')
-            {
-                bracket.push(2);
-                isvalid = true;
-            }
-            else if (input[i] == ']')
-            {
-                if (!bracket.empty() && bracket.top() == 2)
-                {
-                    bracket.pop();
-                }
-                else
-                {
-                    isvalid = false;
-                    break;
-                }
-            }
-            else if (input[i] == ')')
-            {
-                if (!bracket.empty() && bracket.top() == 1)
-                {
-                    bracket.pop();
-                }
-                else
-                {
-                    isvalid = false;
-                    break;
-                }
-            }
-        }
-        if (bracket.empty())
-        {
-            if (isvalid)
-            {
-                cout << "yes" << '\n';
-            }
-            else
-            {
-                cout << "no" << '\n';
-            }
-        }
-        else
-        {
-            cout << "no" << '\n';
-        }
+    for (short i = 1; i < maxN + 1; i++)
+    {
+        counting[i] += counting[i - 1];
+    }
+
+    for (short j = N - 1; j >= 0; j--)
+    {
+        short value = nums[j];
+        counting[value]--;
+        result[counting[value]] = value;
+    }
+
+    // for (short i = 0; i < N; i++)
+    // {
+    //     cout << nums[i] << '\n';
+    // }
+
+    // for (short i = 0; i < maxN + 1; i++)
+    // {
+    //     cout << counting[i] << '\n';
+    // }
+
+    for (short i = 0; i < N; i++)
+    {
+        cout << result[i] << '\n';
     }
 }
