@@ -64,6 +64,7 @@
     "istream": "cpp",
     "ios": "cpp",
     "unordered_map": "cpp",
-    "sstream": "cpp"
+    "sstream": "cpp",
+    "vector": "cpp"
   }
 }
