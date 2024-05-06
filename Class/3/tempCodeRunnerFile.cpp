@@ -1,1 +1,1 @@
-
+                    // cout << clothtype[i] << ' ' << clothamount[i] << ' ';

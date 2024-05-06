@@ -65,6 +65,7 @@
     "ios": "cpp",
     "unordered_map": "cpp",
     "sstream": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "*.tcc": "cpp"
   }
 }
