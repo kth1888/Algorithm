@@ -1,83 +1,64 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
+int N;
+
 int main()
 {
-    int N;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
     cin >> N;
-    int *numbers = new int[N];
-    string input;
     cin.ignore();
 
+    int *paper = new int[N];
+    int *rank = new int[N];
+
+    for (int n = 0; n < N; n++)
+    {
+        rank[n] = 0;
+    }
+
+    string input;
     getline(cin, input);
     stringstream ss(input);
-    cin.ignore();
-
-    int M;
-    cin >> M;
-    int *mnumbers = new int[M];
-    string minput;
-    cin.ignore();
-
-    getline(cin, minput);
-
     string temp;
+
     int i = 0;
-    int minnum = 10000001;
-    int maxnum = -10000001;
     while (ss >> temp)
     {
-        numbers[i] = stoi(temp);
+        int currentrank = 0;
+        int current = stoi(temp);
+        cout << current << '\n';
+        paper[i] = current;
+        for (int j = 0; j < i; j++)
+        {
+            if (paper[j] < current)
+            {
+                currentrank++;
+            }
+            else if (paper[j] > current)
+            {
+                rank[j]++;
+            }
+        }
+        rank[i] = currentrank;
         i++;
-        minnum = min(minnum, numbers[i]);
-        maxnum = max(maxnum, numbers[i]);
-    }
 
-    int numrange = (maxnum - minnum) + 1;
-    int *numindex = new int[numrange];
-    numindex = {
-        0,
-    };
-
-    for (int i = 0; i < N; i++)
-    {
-        numindex[numbers[i] - minnum]++;
-    }
-
-    stringstream mss(minput);
-
-    string mtemp;
-    int j = 0;
-    while (mss >> mtemp)
-    {
-        mnumbers[j] = stoi(mtemp);
-        j++;
-        cout << mnumbers[j] << '\n';
-    }
-
-    int *mnumbersresult = new int[M];
-    mnumbersresult = {
-        0,
-    };
-
-    // comparig mnumbers[k]
-    for (int k = 0; k < M; k++)
-    {
-        if (mnumbers[k] < minnum || mnumbers[k] > maxnum)
+        for (int k = 0; k < N; k++)
         {
-            mnumbersresult[k] = 0;
+            cout << rank[k] << ' ';
         }
-        else
-        {
-            mnumbersresult[k] = numindex[mnumbers[k] + 10];
-        }
+        cout << '\n';
     }
 
-    for (int q = 0; q < M; q++)
+    for (int k = 0; k < N; k++)
     {
-        cout << mnumbersresult[q] << ' ';
+        cout << rank[k] << ' ';
     }
+    cout << '\n';
 }
