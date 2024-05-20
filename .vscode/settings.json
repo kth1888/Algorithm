@@ -66,6 +66,7 @@
     "unordered_map": "cpp",
     "sstream": "cpp",
     "vector": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "cmath": "cpp"
   }
 }

@@ -226,3 +226,5 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/c++,visualstudiocode,python
+.vscode/settings.json
+Class/3/tempCodeRunnerFile.cpp
