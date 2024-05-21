@@ -6,3 +6,6 @@ https://www.acmicpc.net/problem/1931
 
 17626 (24/05/20)
 https://www.acmicpc.net/problem/17626
+
+2805 (24/05/22)
+https://www.acmicpc.net/problem/2805
