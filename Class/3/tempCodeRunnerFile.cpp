@@ -1,2 +1,1 @@
-
-                result += stoi(numbers[i + 1]);
+    // cout << "start: " << init_loc.first << ", " << init_loc.second << '\n';
